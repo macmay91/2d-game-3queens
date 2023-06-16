@@ -189,7 +189,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &157200118
@@ -289,7 +289,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &415870382
@@ -421,8 +421,6 @@ MonoBehaviour:
   followObject: {fileID: 1443090648}
   followOffset: {x: 6.5, y: 1.5}
   speed: 3
-  threshold: {x: 0, y: 0}
-  rb: {fileID: 0}
 --- !u!1 &655557537
 GameObject:
   m_ObjectHideFlags: 0
@@ -5317,7 +5315,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &658711659
@@ -5401,7 +5399,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1063973569
@@ -5615,7 +5613,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1432566414
@@ -5711,14 +5709,13 @@ MonoBehaviour:
   dust: {fileID: 655557540}
   moveSpeed: 7
   direction: {x: 0, y: 0}
-  facingRight: 1
   jumpSpeed: 10
   jumpDelay: 0.25
-  jumpTimer: 0
   characterHolder: {fileID: 1866023955}
   rb: {fileID: 1443090652}
   animator: {fileID: 415870382}
   groundLayer:
+    serializedVersion: 2
     m_Bits: 64
   maxSpeed: 7
   linearDrag: 4
