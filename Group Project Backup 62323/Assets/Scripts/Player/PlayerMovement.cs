@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 ceilingGizmoY;
     public Vector3 ceilingGizmoOffset;
     public Vector3 crouchSize;
+    private Vector3 normalOffset;
+    private Vector3 normalSize;
     public Vector3 crouchOffset;
     public Vector3 ceilingOffset;
     
@@ -52,8 +54,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //holds value of starting max speed
         initialMaxSpeed = maxSpeed;
+        normalOffset = playerCollider.offset;
+        normalSize = playerCollider.size;
 
-    }
+}
     void Update()
     {
         bool wasOnGround = grounded;
@@ -93,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         //Set animation parameters
         animator.SetFloat("horizontal", Mathf.Abs(Input.GetAxis("Horizontal")));
         animator.SetBool("grounded", grounded);
+        animator.SetBool("Crouched", crouched);
     }
 
     void FixedUpdate()
@@ -107,9 +112,9 @@ public class PlayerMovement : MonoBehaviour
         //top collider collision turned off if crouched
         //GetComponent<BoxCollider2D>().isTrigger = (crouched || underPlatform) ? true : false;
         //resizes collider if crouched
-        playerCollider.size = (crouched || underPlatform) ? new Vector3(0.3600313f, crouchSize.y, 1) : new Vector3(0.3600313f, 1.813367f, 1);
+        playerCollider.size = (crouched || underPlatform) ? new Vector3(0.3600313f, crouchSize.y, 1) : normalSize;
         //collider offset while crouched
-        playerCollider.offset = (crouched || underPlatform) ? (new Vector3(0, crouchOffset.y, 0)) : new Vector3(0, 0, 0);
+        playerCollider.offset = (crouched || underPlatform) ? (new Vector3(0, crouchOffset.y, 0)) : normalOffset;
         modifyPhysics();
     }
 

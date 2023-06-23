@@ -17,6 +17,7 @@ public class Dog : MonoBehaviour
     public Vector3 bounds;
     public Transform territory;
     private Vector3 initialScale;
+    private bool stopMoving;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class Dog : MonoBehaviour
         {
             //player loses grade
             player.GetComponent<Grade>().LoseGrade(damage);
+            StartCoroutine(Wait());
         }
     }
 
@@ -69,9 +71,18 @@ public class Dog : MonoBehaviour
         Gizmos.DrawWireCube(territory.position + hitOffset, bounds);
     }
 
+    private IEnumerator Wait()
+    {
+        //stop dog from moving for 3 seconds
+        stopMoving = true;
+        yield return new WaitForSeconds(3);
+        stopMoving = false;
+
+    }
+
     private void Chase()
     {
-        //face right direction
+         //face right direction
         if (player.transform.position.x <= gameObject.transform.position.x)
         {
             gameObject.transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
@@ -80,8 +91,12 @@ public class Dog : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(initialScale.x * -1, initialScale.y, initialScale.z);
         }
+        
+        if (!stopMoving)
+        {
+            //move toward player at speed of dog
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(player.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), dogSpeed * Time.deltaTime);
+        }
 
-        //move toward player at speed of dog
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(player.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), dogSpeed * Time.deltaTime);
     }
 }
