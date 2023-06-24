@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - OneWayPlatform
   - Hitbox
+  - Timer
   layers:
   - Default
   - TransparentFX
