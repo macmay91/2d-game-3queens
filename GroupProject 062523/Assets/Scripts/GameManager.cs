@@ -6,10 +6,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
+
+    [Header("Grade")]
+    public float currentGrade;
+
+    [Header("Score")]
     public float levelOneMin;
     public float levelTwoMin;
     public float levelOneSec;
     public float levelTwoSec;
+    public float levelOneGrade;
+    public float levelTwoGrade;
 
     private void Awake()
     {

@@ -7,6 +7,7 @@ public class StageEnd : MonoBehaviour
 {
 
     private GameObject timer;
+    private GameObject player;
 
     private void Awake()
     {
@@ -22,11 +23,15 @@ public class StageEnd : MonoBehaviour
             
             if(sceneName == "Level1")
             {
+                //record level one variables and go to next stage
                 timer.GetComponent<Timer>().RecordTime();
+                GameManager.gm.levelOneGrade = GameManager.gm.currentGrade;
                 GameManager.gm.LevelTwo();
             }
             else if(sceneName == "Level2")
             {
+                //record level two variables and go to next stage
+                GameManager.gm.levelTwoGrade = GameManager.gm.currentGrade;
                 timer.GetComponent<Timer>().RecordTime();
                 GameManager.gm.WinScene();
             }
